@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1a6ef0">
+<meta name="color-scheme" content="light dark">
+<title>Inwentaryzacja</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Inwentaryzacja <span id="net" class="mu"></span></h1>
+
+<section class="card" id="top">
+  <div class="row"><button class="p" id="load">Wczytaj arkusz (xlsx / csv)</button><button id="imp">Wczytaj sesję z innego tel.</button></div>
+  <div class="row"><button id="c1">Liczenie 1</button><button id="c2">Liczenie 2</button></div>
+  <div class="row"><button id="dev">Telefon: ?</button><button id="clear">Wyczyść dane</button></div>
+  <input type="file" id="file" accept=".xlsx,.csv,.txt,.tsv" class="hidden">
+  <input type="file" id="file2" accept=".json,application/json" class="hidden">
+  <p class="mu" id="info">Wczytaj arkusz z danymi (dowolne kolumny — w następnym kroku wskażesz, co oznaczają).</p>
+  <div class="bar"><div id="prog"></div></div>
+  <p id="msg" role="status" aria-live="polite" class="msg hidden"></p>
+</section>
+
+<section class="card hidden" id="mapping"></section>
+
+<div id="work" class="hidden">
+  <section class="card">
+    <input type="text" id="code" placeholder="Kod / indeks / fragment nazwy" autocomplete="off" autocapitalize="off" enterkeyhint="search">
+    <div class="row"><button id="cam">📷 Skanuj</button><button class="p" id="find">Szukaj</button></div>
+    <video id="vid" class="hidden" playsinline muted></video>
+    <input type="file" id="ph" accept="image/*" capture="environment" class="hidden">
+  </section>
+  <div id="pn"></div>
+  <section class="card">
+    <div class="row"><button id="mn">Pozycje</button><button id="mi">Indeksy (suma)</button></div>
+    <div class="row"><button id="all">Wszystkie</button><button id="todo">Niepoliczone</button><button id="dif">Różnice</button><button id="cmp">L1≠L2</button></div>
+    <div id="list"></div>
+  </section>
+  <div class="row">
+    <button class="p" id="expx">Zapisz Excel</button>
+    <button id="expc">CSV</button>
+    <button id="exps">Sesja (.json)</button>
+  </div>
+</div>
+
+<p class="mu foot">Dane zostają w tym urządzeniu (nic nie jest wysyłane do sieci). Przed wyczyszczeniem danych przeglądarki zapisz wynik.</p>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>
