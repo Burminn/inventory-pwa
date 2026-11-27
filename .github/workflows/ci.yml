@@ -29,5 +29,5 @@ jobs:
       - name: Podatności zależności (npm audit)
         run: npm audit --omit=dev --audit-level=high
       - name: Sekrety w repozytorium (gitleaks)
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
