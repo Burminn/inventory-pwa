@@ -19,7 +19,7 @@ jobs:
       - run: npm install && npm test && npm run build
       - name: Wersja cache service workera = skrót commita
         run: sed -i "s/const VERSION = 'dev';/const VERSION = '${GITHUB_SHA::8}';/" public/sw.js
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3
         with: { path: public }
       - id: deployment
